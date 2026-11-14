@@ -1,0 +1,689 @@
+/* ==========================================================================
+   PALAK'S RESUME WEBSITE — EXTERNAL STYLESHEET (style.css)
+   Course: IIM Bangalore BBA (DBE) — Website Development Mid-Term Project
+   Concepts Applied: Color Theory, Typography Hierarchy, Box Model, Specificity,
+   Flexbox (1D), CSS Grid (2D), Sticky Positioning, Pseudo-Selectors & Media Queries
+   ========================================================================== */
+
+/* 1. UNIVERSAL SELECTOR & CSS VARIABLES (Color Theory Palette) */
+:root {
+    --primary-navy: #0f172a;       /* Deep Slate Navy: Conveys trust, professionalism & authority */
+    --royal-blue: #1e3a8a;         /* Academic & Financial reliability */
+    --tint-rose: #be123c;          /* Creative Crimson/Rose: Subtle nod to 'Tintify' lip-tint venture */
+    --tint-rose-light: #ffe4e6;    /* Soft highlight background */
+    --bg-ivory: #f8fafc;           /* High-contrast clean white/ivory space */
+    --card-white: #ffffff;         /* Pure white surface for cards */
+    --text-main: #1e293b;          /* High legibility dark charcoal for body copy */
+    --text-muted: #64748b;         /* Secondary metadata text */
+    --border-subtle: #e2e8f0;      /* Clean structural dividers */
+    --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+    --shadow-hover: 0 12px 28px -4px rgba(15, 23, 42, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+/* 2. ELEMENT SELECTORS & TYPOGRAPHY HIERARCHY */
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-ivory);
+    color: var(--text-main);
+    line-height: 1.65;
+}
+
+h1, h2, h3 {
+    color: var(--primary-navy);
+    line-height: 1.25;
+}
+
+h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+}
+
+h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    max-width: 68ch; /* Typography best practice: optimal line length for readability */
+}
+
+a {
+    color: var(--royal-blue);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    color: var(--tint-rose);
+}
+
+/* Pseudo-element selector (Module 4.10) */
+::selection {
+    background-color: var(--tint-rose);
+    color: #ffffff;
+}
+
+/* 3. LAYOUT CONTAINERS & BOX MODEL SPACING */
+.container {
+    width: 92%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.section-block {
+    padding: 3.5rem 0 1rem;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--tint-rose);
+    padding-left: 1rem;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--tint-rose);
+    margin-bottom: 0.25rem;
+}
+
+/* 4. STICKY NAVIGATION BAR (Positioning & Flexbox) */
+#main-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.9rem 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+    letter-spacing: 0.04em;
+}
+
+.accent-dot {
+    color: var(--tint-rose);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-item {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.nav-item:hover {
+    color: var(--tint-rose);
+}
+
+.nav-cta {
+    display: inline-block;
+    background-color: var(--primary-navy);
+    color: #ffffff !important;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.nav-cta:hover {
+    background-color: var(--tint-rose);
+    transform: translateY(-1px);
+}
+
+/* 5. HERO HEADER SECTION (ID Selector & CSS Grid) */
+#hero-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 4rem 0;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.primary-badge {
+    background-color: #dbeafe;
+    color: var(--royal-blue);
+}
+
+.secondary-badge {
+    background-color: var(--tint-rose-light);
+    color: var(--tint-rose);
+}
+
+.hero-subtitle {
+    font-size: 1.12rem;
+    color: var(--text-main);
+    margin-bottom: 1.25rem;
+}
+
+.hero-tagline {
+    background-color: var(--card-white);
+    border-left: 4px solid var(--royal-blue);
+    padding: 1rem 1.25rem;
+    font-style: italic;
+    color: var(--primary-navy);
+    font-weight: 500;
+    border-radius: 0 8px 8px 0;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1.75rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Call to Action (CTA) Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--tint-rose);
+    color: #ffffff !important;
+    border: 2px solid var(--tint-rose);
+}
+
+.btn-primary:hover {
+    background-color: #9f1239;
+    border-color: #9f1239;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-navy);
+    border: 2px solid var(--primary-navy);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-navy);
+    color: #ffffff !important;
+}
+
+/* Hero Profile Card */
+.profile-card {
+    background-color: var(--card-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 4px solid var(--bg-ivory);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-meta p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0 auto 1rem;
+}
+
+.card-divider {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    margin: 1.2rem 0;
+}
+
+.quick-stats {
+    display: flex;
+    justify-content: space-around;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--royal-blue);
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* 6. DATA TABLE STYLING (Education Section — Module 3.17 & 4.7) */
+.table-responsive {
+    overflow-x: auto;
+    background: var(--card-white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--border-subtle);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse; /* Merges cell borders cleanly */
+    text-align: left;
+}
+
+.data-table th {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    padding: 1rem 1.25rem;
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.data-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.95rem;
+}
+
+/* Pseudo-class :nth-of-type for Zebra Striping */
+.data-table tbody tr:nth-of-type(even) {
+    background-color: #f8fafc;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.table-pill {
+    display: inline-block;
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 0.2rem 0.65rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.subject-callout {
+    margin-top: 1rem;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 0.85rem 1.25rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+}
+
+.subject-callout p {
+    margin-bottom: 0;
+    max-width: 100%;
+}
+
+.divider-pipe {
+    margin: 0 0.75rem;
+    color: #93c5fd;
+}
+
+/* 7. CSS GRID SYSTEMS & REUSABLE CARDS (Module 5.2) */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+}
+
+.grid-3-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.featured-border {
+    border-top: 4px solid var(--tint-rose);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.venture-badge {
+    display: inline-block;
+    background-color: var(--tint-rose-light);
+    color: var(--tint-rose);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.alt-badge {
+    background-color: #dbeafe;
+    color: var(--royal-blue);
+}
+
+.date-location {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-align: right;
+    white-space: nowrap;
+}
+
+.venture-summary {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.styled-list {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.styled-list li {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+}
+
+.metric-strip {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.metric-pill {
+    background-color: var(--bg-ivory);
+    border: 1px solid var(--border-subtle);
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+/* 8. SCHOLARSHIP AWARD CARDS */
+.award-card {
+    text-align: left;
+    position: relative; /* Sets positioning context for decorative elements */
+    border-top: 4px solid var(--royal-blue);
+}
+
+.award-stat {
+    display: inline-block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--royal-blue);
+    margin-bottom: 0.5rem;
+}
+
+/* 9. ORDERED TIMELINE LIST (Programmes & Achievements) */
+.programme-timeline {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    counter-reset: prog-counter;
+}
+
+.timeline-item {
+    background-color: var(--card-white);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.timeline-item::before {
+    counter-increment: prog-counter;
+    content: "0" counter(prog-counter);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: var(--primary-navy);
+    padding: 0.45rem 0.65rem;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.timeline-content p {
+    margin-bottom: 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+/* 10. SKILLS TAG CLOUD (inline-block demonstration) */
+.box-subtext {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+}
+
+.tag-cloud {
+    margin-bottom: 0.5rem;
+}
+
+.skill-tag {
+    display: inline-block; /* Module 4.13: respects padding/margins while flowing inline */
+    background-color: var(--bg-ivory);
+    border: 1px solid var(--border-subtle);
+    color: var(--primary-navy);
+    padding: 0.45rem 0.9rem;
+    margin: 0 0.4rem 0.5rem 0;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.skill-tag:hover {
+    background-color: var(--primary-navy);
+    color: #ffffff;
+    border-color: var(--primary-navy);
+}
+
+.tool-tag {
+    background-color: #fff1f2;
+    border-color: #fecdd3;
+    color: var(--tint-rose);
+}
+
+/* 11. CONTACT FORM SECTION */
+.contact-card {
+    background: linear-gradient(to right, #ffffff, #f8fafc);
+}
+
+.contact-links-list p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary-navy);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.form-group input:focus {
+    outline: 2px solid var(--royal-blue);
+    border-color: transparent;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 0.25rem;
+}
+
+.radio-label {
+    font-weight: 500 !important;
+    font-size: 0.88rem !important;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* 12. FOOTER */
+.site-footer {
+    margin-top: 4rem;
+    background-color: var(--primary-navy);
+    color: #cbd5e1;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.site-footer p {
+    margin-bottom: 0;
+}
+
+.footer-links a {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* 13. RESPONSIVE DESIGN & MEDIA QUERIES (Module 5.3) */
+@media (max-width: 860px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-grid,
+    .grid-2-col,
+    .grid-3-col,
+    .programme-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.85rem;
+    }
+}
